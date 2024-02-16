@@ -1971,6 +1971,7 @@ void run_detector(int argc, char **argv)
     float hier_thresh = find_float_arg(argc, argv, "-hier", .5);
     int cam_index = find_int_arg(argc, argv, "-c", 0);
     int frame_skip = find_int_arg(argc, argv, "-s", 0);
+    char interest_class = find_char_arg(argc, argv, "-Class", 0);
     int num_of_clusters = find_int_arg(argc, argv, "-num_of_clusters", 5);
     int width = find_int_arg(argc, argv, "-width", -1);
     int height = find_int_arg(argc, argv, "-height", -1);

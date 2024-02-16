@@ -475,6 +475,9 @@ void draw_detections_v3(image im, detection *dets, int num, float thresh, char *
 void draw_detections(image im, int num, float thresh, box *boxes, float **probs, char **names, image **alphabet, int classes)
 {
     int i;
+    float distance;
+    float focal_length_;
+    float sedan_height_ = 1.445;
 
     for(i = 0; i < num; ++i){
         int class_id = max_index(probs[i], classes);
@@ -518,7 +521,8 @@ void draw_detections(image im, int num, float thresh, box *boxes, float **probs,
             if(right > im.w-1) right = im.w-1;
             if(top < 0) top = 0;
             if(bot > im.h-1) bot = im.h-1;
-            printf("%s: %.0f%%", names[class_id], prob * 100);
+            // depth estimation
+            printf("%s: %.0f%%, Estimate Distance : %.0fm", names[class_id], prob * 100, distance);
 
             //printf(" - id: %d, x_center: %d, y_center: %d, width: %d, height: %d",
             //    class_id, (right + left) / 2, (bot - top) / 2, right - left, bot - top);
